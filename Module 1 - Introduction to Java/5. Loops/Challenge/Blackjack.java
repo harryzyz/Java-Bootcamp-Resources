@@ -68,11 +68,11 @@ public class Blackjack {
             dealerTotal += dealerHit;
             System.out.println("\nDealer gets a \n" + cardString(dealerHit));
             System.out.println("\nDealer's total is " + dealerTotal);
-
-            if (dealerTotal > 21) {
-                System.out.println("Bust! Dealer loses.");
-                System.exit(0);
             }
+        
+        if (dealerTotal > 21) {
+            System.out.println("Bust! Dealer loses.");
+            System.exit(0);
         }
 
         if (playerTotal > dealerTotal) {
@@ -265,6 +265,11 @@ public class Blackjack {
         }
         return move;
     }
+
+    // public static int updateTotal(int oldTotal; int newCard) {
+    //     int aceStatus = 0; // 0: no ace; 1: ace as 11; 2: ace as 1
+    //     if (newCard == 1)
+    // }
 
 
 
