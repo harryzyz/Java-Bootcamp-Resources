@@ -8,6 +8,8 @@ public class JavaRolls {
               1. print: Let's play Rolling Java. Type anything to start.
               2. Get the user to enter any value
         */
+        System.out.println("Let's play Rolling Java. Type anything to start.");
+        scan.nextLine();
 
         /* Task 2: 
               1. Once the user is ready, print: 
@@ -18,14 +20,21 @@ public class JavaRolls {
                     You must collect at least 3 points to win. Enter anything to roll:
               2. Get the user to enter any value
         */
+        System.out.println("Great, here are the rules:\n");
+        System.out.println(" - If you roll a 6 the game stops.");
+        System.out.println(" - If you roll a 4 nothing happens.");
+        System.out.println(" - Otherwise, you get 1 point.\n");
+        System.out.println("You must collect at least 3 points to win. Enter anything to roll:");
+        // scan.nextLine();
 
-       int score = 0;
+
+        int score = 0;
       
        /* 
          Task 3
           1. Make a while loop that runs forever
           2. During each run, get them to enter a random value
-          
+         
           
           Task 5
            1. During each run, call the rollDice() function.
@@ -45,7 +54,20 @@ public class JavaRolls {
               2. print: One point. Keep rolling. 
 
        */
-
+      while (true) {
+        scan.nextLine();
+        int roll = rollDice();
+        System.out.println("You rolled a " + roll);
+        if (roll == 6) {
+          System.out.println("End of game.");
+          break;
+        } else if (roll == 4) {
+          System.out.println("Zero points. Keep rolling.");
+        } else {
+          score++;
+          System.out.println("One point. Keep rolling.");
+        }
+      }
       
       /* Task 7
       
@@ -58,15 +80,25 @@ public class JavaRolls {
               Otherwise, print:
                   Tough luck, you lose :( 
       */
+      System.out.println("\nYour score is: " + score);
+      if (score >= 3) {
+        System.out.println("Wow, that's lucky. You win!");
+      } else {
+        System.out.println("Tough luck, you lose :(");
+      }
+      scan.close();
 
     }
   
   
     /** Task 4
-     * Function name: rollDice – rolls a dice between 1 and 6
+     * Function name: rollDice - rolls a dice between 1 and 6
      * @return randomNumber (int)
      * 
      */ 
+    public static int rollDice() {
+      return (int) (Math.random() * 6) + 1;
+    }
   
-  
+    
 }
