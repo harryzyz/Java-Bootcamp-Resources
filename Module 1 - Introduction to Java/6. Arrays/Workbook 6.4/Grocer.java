@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Grocer {
     public static void main(String[] args) {
 
@@ -5,7 +7,9 @@ public class Grocer {
         System.out.println("\nWelcome to Java Grocers. ");
         System.out.println("What can I help you find?\n");
         //  Task 1: Set up Scanner, and pick up the user's response.  
-
+        Scanner scan = new Scanner(System.in);
+        String res = scan.nextLine();
+        scan.close();
         
         for (int i = 0; i < store.length; i++) {
           /* Task 2  
@@ -14,6 +18,10 @@ public class Grocer {
                     break;
                 }
           */
+          if (store[i].equals(res)) {
+            System.out.println("\nWe have that in aisle: " + i);
+            break;
+          }
         }
 
     }
