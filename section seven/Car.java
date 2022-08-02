@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.function.ObjDoubleConsumer;
 
 public class Car {
     
@@ -66,7 +65,7 @@ public class Car {
     }
 
     public void drive() {
-        System.out.println("You bought the beautiful " + this.year + " " + this.color + " " + this.make + " for $" + this.price + ".");
+        System.out.println("\nYou bought the beautiful " + this.year + " " + this.color + " " + this.make + " for $" + this.price + ".");
         System.out.println("Please drive your car to the nearest exit.\n");
     }
 
@@ -75,7 +74,7 @@ public class Car {
             + "Price: " + this.price + ".\n"
             + "Year: " + this.year + ".\n"
             + "Color: " + this.color + ".\n"
-            + "Parts: " + Arrays.toString(parts) +".\n";
+            + "Parts: " + Arrays.toString(this.parts) +".\n";
     }
 
 

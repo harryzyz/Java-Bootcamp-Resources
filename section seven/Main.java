@@ -1,20 +1,54 @@
-import java.util.Arrays;
+// import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main{
+    public static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
 
-        String[] parts = {"tires", "keys"};
-
-        Car nissan = new Car("Nissan", 5000, 2020, "red", parts);
         
-        Car dodge = new Car("Dodge", 11000, 2019, "blue", parts);
+        Car[] cars = new Car[] {
+            new Car("Nissan", 5000, 2020, "red", new String[] {"tires", "keys"}),
+            new Car("Dodge", 11000, 2019, "blue", new String[] {"tires", "keys"}),
+            new Car("Nissan", 7000, 2017, "yellow", new String[] {"tires", "filter"}),
+            new Car("Honda", 7000, 2019, "orange", new String[] {"tires", "filter"}),
+            new Car("Mercedes", 12000, 2017, "jet black", new String[] {"tires", "filter","transmission"}),
+        };
 
-        Car nissan2 = new Car(nissan);
+        Dealership dealership = new Dealership(cars);
+
+        // System.out.println(dealership);
+
+        System.out.println("\n ****** JAVA DEALERSHIP! ****** \n");
+        System.out.print("Welcome! Enter the type of car you're looking for: ");
+        String make = scan.nextLine();
+        System.out.print("Enter your budget: ");
+        double budget = scan.nextDouble();
+        scan.nextLine();
         
-        nissan2.setColor("yellow");
-        nissan2.setParts(new String[] {"tires", "filter"});
+        int carSpot = dealership.search(make, budget);
 
-        Dealership dealership = new Dealership();
+        if (carSpot == 404) {
+            System.out.println("Feel free to browse through our collection of cars.\n");
+            System.out.println(dealership);
+        } else {
+            String response = scan.nextLine();
+            if (response.equalsIgnoreCase("yes")){
+                dealership.sell(carSpot);
+            } else {
+                System.out.println("Feel free to browse through our collection of cars.\n");
+                System.out.println(dealership);
+            }
+            
+        }
+
+        scan.close();
+
+       
+
+        // dealership.sell(2);
+        // System.out.println(dealership);
+
+        
 
         // System.out.println(nissan);
 
