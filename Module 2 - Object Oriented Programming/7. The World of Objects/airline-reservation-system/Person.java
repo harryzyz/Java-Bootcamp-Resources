@@ -62,9 +62,10 @@ public class Person {
     }
 
     public void setPassport() {
-        this.passport[0] = this.name;
-        this.passport[1] = this.nationality;
-        this.passport[2] = this.dateOfBirth; 
+        // this.passport[0] = this.name;
+        // this.passport[1] = this.nationality;
+        // this.passport[2] = this.dateOfBirth; 
+        this.passport = new String[] {this.name, this.nationality, this.dateOfBirth};
     }
 
     /**

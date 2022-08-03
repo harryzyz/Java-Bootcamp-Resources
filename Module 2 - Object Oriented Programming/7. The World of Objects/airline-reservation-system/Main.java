@@ -2,24 +2,41 @@ public class Main {
   
     public static void main(String[] args) {
 
-        Person person = new Person("Ryan", "Canada", "1/1/1111", 11);
+        Person[] people = new Person[] { 
+            new Person("Cleopatra", "Egypt", "69 BC", 1),
+            new Person("Alexander the Great", "Macedon", "356 BC", 1),
+            new Person("Julius Caesar", "Rome", "100 BC", 1),
+            new Person("Hannibal", "Carthage", "247 BC", 1),
+            new Person("Confucius", "China", "551 BC", 1),
+            new Person("Pericles", "Greece", "429 BC", 2),
+            new Person("Spartacus", "Thrace", "111 BC", 2),
+            new Person("Marcus Aurelius", "Rome", "121 AD", 2),
+            new Person("Leonidas", "Greece", "540 BC", 2),
+            new Person("Sun Tzu", "China", "544 BC", 2),
+            new Person("Hammurabi", "Babylon", "1750 BC", 2),
+        };
 
-        if (person.applyPassport() == true) {
-            person.setPassport();
-        }
+        Airline airline = new Airline();
 
         
-        boolean bool = person.applyPassport();
-        if (bool == true) {
-            System.out.println("Approved");
-        } else if (bool == false) {
-            System.out.println("Denied");
+
+        for (int i = 0; i < people.length; i++) {
+            
+            if (people[i].applyPassport()) {
+                people[i].setPassport();
+                airline.createReservation(people[i]);
+                // System.out.println("Passport approved");
+            } 
         }
 
-        person.chooseSeat();
+        // System.out.println(airline);
+        // Person sunZi = new Person(people[9]);
+        // sunZi.setPassport();
+        // System.out.println(sunZi);
 
-        System.out.println(person);
-
+        System.out.println("********************** RESERVATIONS COMPLETE! **********************\n");
+        System.out.println(airline);
+        
 
       
       
