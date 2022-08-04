@@ -1,8 +1,12 @@
+package models;
 public class Employee {
     private String name;
     private String position;
 
     public Employee(String name, String position) {
+        if (name == null || name.isBlank() || position == null || position.isBlank()) {
+            throw new IllegalArgumentException("Name or postion cannot be null/blank");
+        }   
         this.name = name;
         this.position = position;
     }
