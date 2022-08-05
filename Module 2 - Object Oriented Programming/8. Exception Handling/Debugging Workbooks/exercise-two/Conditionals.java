@@ -5,7 +5,7 @@ public class Conditionals {
         double debt = 4000;
 
         String creditScore = debt <= 0 ? "Good" : "Bad";
-        boolean canApply = age >= 18 ? true : false;
+        boolean canApply = age >= 18;
 
         if (canApply && creditScore.equals("Good")) {
             System.out.println("We're processing your application");
