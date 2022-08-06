@@ -18,5 +18,8 @@ public class Person {
         return nationality;
     }
 
+    public String toString() {
+        return "Name: " + this.name + "\tNationality: " + this.nationality;
+    }
 
 }
