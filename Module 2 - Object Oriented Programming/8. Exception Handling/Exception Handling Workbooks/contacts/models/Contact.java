@@ -10,41 +10,47 @@ public class Contact {
     private int age;
     private String birthDate;
     private String phoneNumber;
-
+    
     public Contact(String name, String birthDate, String phoneNumber) throws ParseException {
         this.name = name;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
         String pattern = "MM/dd/yyyy";
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        formatter.setLenient(false);
         long diff = new Date().getTime() - formatter.parse(birthDate).getTime();
         this.age = (int) (TimeUnit.MILLISECONDS.toDays(diff) / 365) ;
     }
-
+    
     public Contact(Contact source) {
         this.name = source.name;
         this.age = source.age;
         this.birthDate = source.birthDate;
         this.phoneNumber = source.phoneNumber;
     }
-
+    
     public int getAge() {
         return age;
     }
-
+    
     public String getName() {
         return name;
     }
-
+    
     public String getBirthDate() {
         return birthDate;
     }
-
+    
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
+    
     public void setAge(int age) {
+        // String pattern = "MM/dd/yyyy";
+        // SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        // formatter.setLenient(false);
+        // long diff = new Date().getTime() - formatter.parse(birthDate).getTime();
+        // this.age = (int) (TimeUnit.MILLISECONDS.toDays(diff) / 365);
         this.age = age;
     }
 
