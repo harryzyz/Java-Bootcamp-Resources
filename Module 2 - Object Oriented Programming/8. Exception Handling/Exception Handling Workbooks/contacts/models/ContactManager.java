@@ -30,7 +30,7 @@ public class ContactManager {
                 contacts.remove(i);
             }
         }
-        
+
     }
 
     public String toString() {
