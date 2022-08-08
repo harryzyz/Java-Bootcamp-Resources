@@ -3,3 +3,6 @@ The tax rate is 13%.
 
                Test Cases
 ----------------------------------------
+1. subtotal equals the sum of every price.
+2. Tax equals 13% of subtotal.
+3. total equals subtotal plus tax.
