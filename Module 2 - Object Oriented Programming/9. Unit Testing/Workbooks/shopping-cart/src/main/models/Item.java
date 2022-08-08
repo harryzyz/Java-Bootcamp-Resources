@@ -1,5 +1,6 @@
 package src.main.models;
 
+
 public class Item {
     private String name;
     private double price;
@@ -42,6 +43,20 @@ public class Item {
             throw new IllegalArgumentException("Price cannot be less than zero");
         }
         this.price = price;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Item)) {
+            return false;
+        }
+
+        Item item = (Item)obj;
+        return this.name.equals(item.name) &&
+            this.price == item.price;
     }
 
     public String toString() {
