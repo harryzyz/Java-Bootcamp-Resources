@@ -16,6 +16,8 @@ public class Store {
         this.items[row][column] = new Item(item);
     }
 
+    
+
     public String toString() {
         String temp = "";
 

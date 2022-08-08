@@ -30,7 +30,7 @@ public class Cart {
         if (this.items.contains(item)) {
             return false;
         } else {
-            items.add(item);
+            items.add(new Item(item));
             return true;
         }
         // return true;
@@ -93,7 +93,6 @@ public class Cart {
   */
     public boolean contains(Item item) {
         return this.items.contains(item);
-
     }
 
 
