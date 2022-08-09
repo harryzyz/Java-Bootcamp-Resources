@@ -45,10 +45,14 @@ public class Cart {
     *   2. removes the item that matches the name passed in. 
     */
     public void remove(String name) {
-        if (items.isEmpty()) {
+        if (this.items.isEmpty()) {
             throw new IllegalStateException("cannot remove item from an empty cart");
         }
         items.removeIf((item) -> item.getName().equals(name));
+    }
+
+    public void clear() {
+        this.items.clear();
     }
 
     public int getItemIndex(String name) {
@@ -74,7 +78,7 @@ public class Cart {
     }
 
     public String checkout() {
-        if (items.isEmpty()) {
+        if (this.items.isEmpty()) {
             throw new IllegalStateException("cannot checkout an empty cart");
         }
         return "\tRECEIPT\n\n" +

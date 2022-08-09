@@ -28,7 +28,7 @@ public class CartTest {
 
     @Test 
     public void skipDuplcated() {
-        assertFalse(cart.add(new Item("Crush", 1.99)));;
+        assertFalse(cart.add(new Item("Crush", 1.99)));
     }
 
     @Test
@@ -50,20 +50,18 @@ public class CartTest {
 
     @Test
     public void totalIsValid() {
-        assertEquals(4.5, cart.getTotal(3.98, 0.52));
+        assertEquals(120, cart.getTotal(100, 20));
     }
 
     @Test(expected = IllegalStateException.class)
     public void invalidRemoveState() {
-        cart.remove("Crush");
-        cart.remove("Pepsi");
+        cart.clear();
         cart.remove("Pepsi");
     }
 
     @Test(expected = IllegalStateException.class)
     public void invalidCheckoutState() {
-        cart.remove("Crush");
-        cart.remove("Pepsi");
+        cart.clear();
         cart.checkout();
     }
     
