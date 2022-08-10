@@ -1,6 +1,7 @@
 package src.main.models;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Team {
 
@@ -21,7 +22,6 @@ public class Team {
      * the variable. But if you want to expose the variable, that's also correct.
      * 
      */
-    
 
     public Team(String house, String keeper, String seeker, String[] chasers) {
         checkParam(house);
@@ -107,35 +107,55 @@ public class Team {
 
     /**
      * Function name: hasNull
+     * 
      * @param array
      * @return (boolean)
      * 
-     * Inside the function:
-     *    1. return true if the array contain null element.
+     *         Inside the function:
+     *         1. return true if the array contain null element.
      */
     public static boolean hasNull(String[] array) {
         return Arrays.stream(array)
-        .anyMatch((item) -> item == null);
+                .anyMatch((item) -> item == null);
     }
 
     /**
      * Function name: hasBlank
+     * 
      * @param array
      * @return
      * 
-     * Inside this function:
-     *    1. return true if the array contains blank element.
+     *         Inside this function:
+     *         1. return true if the array contains blank element.
      */
     public static boolean hasBlank(String[] array) {
         return Arrays.stream(array)
-        .anyMatch((item) -> item.isBlank());
+                .anyMatch((item) -> item.isBlank());
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Team)) {
+            return false;
+        }
+        Team team = (Team) obj;
+        return this.house.equals(team.house) &&
+                this.keeper.equals(team.keeper) &&
+                this.seeker.equals(team.seeker) &&
+                Arrays.toString(this.chasers).equals(Arrays.toString(team.chasers));
+    }
+
+    public int hashCode() {
+        return Objects.hash(house, keeper, seeker, Arrays.toString(chasers));
     }
 
     public String toString() {
         return "House: " + this.house + "\n" +
-          "Keeper: " + this.keeper + "\n" +         
-          "Seeker: "  + this.seeker + "\n" +         
-          "Chasers: " + Arrays.toString(this.chasers) + "\n"; 
+                "Keeper: " + this.keeper + "\n" +
+                "Seeker: " + this.seeker + "\n" +
+                "Chasers: " + Arrays.toString(this.chasers) + "\n";
     }
 
 }

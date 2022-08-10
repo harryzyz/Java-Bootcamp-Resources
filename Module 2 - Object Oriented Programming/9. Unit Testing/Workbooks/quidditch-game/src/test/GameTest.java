@@ -1,15 +1,61 @@
 package src.test;
-import src.main.models.Game;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import src.main.models.Game;
+import src.main.models.Team;
 
 public class GameTest {
 
     Game game;
 
+    @Before
+    public void setup() {
+        Team home = new Team("GRYFFINDOR", "Oliver", "Harry",
+                new String[] { "Angelina", "Ginny", "Katie" });
 
+        Team away = new Team("SLYTHERIN", "Vincent", "Draco",
+                new String[] { "Bridget", "Harper", "Malcolm" });
 
+        game = new Game(home, away);
+    }
 
+    /**
+     * Function name: getPlaceholder
+     * 
+     * @param play (String)
+     * @return (String)
+     * 
+     *         Inside the function:
+     *         1. Returns "hello".
+     */
+    @Test
+    public void getPlaceholderTest() {
+        assertEquals("chaser", game.getPlaceholder("<chaser> gets the next pass"));
+    }
 
+    @Test
+    public void replacePlaceholderTest() {
+        assertEquals("Katie gets the next pass",
+                game.replacePlaceholder("<chaser> gets the next pass", "chaser", "Katie"));
+    }
 
+    @Test
+    public void quaffleScoreTest() {
+        Team team = game.getTeam("GRYFFINDOR");
+        game.quaffleScore(team);
+        game.quaffleScore(team);
+        assertEquals(Game.getQuafflePoints() * 2, game.getScore(team));
+    }
+
+    @Test
+    public void catchSnitchTest() {
+        Team team = game.getTeam("SLYTHERIN");
+        game.catchSnitch(team);
+        assertEquals(Game.getSnitchPoints(), game.getScore(team));
+    }
 
 }
