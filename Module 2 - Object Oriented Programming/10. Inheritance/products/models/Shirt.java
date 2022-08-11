@@ -2,12 +2,15 @@ package models;
 
 import java.util.Objects;
 
-public class Shirt extends Product{
+public class Shirt extends Product {
     
-    private String size;
+    public enum Size {
+        SMALL, MEDIUM, LARGE
+    }
+    private Size size;
     
 
-    public Shirt(String size, double price, String color, String brand) {
+    public Shirt(Size size, double price, String color, String brand) {
         super(price, color, brand);
         this.size = size;
     }
@@ -18,13 +21,15 @@ public class Shirt extends Product{
     }
 
 
-    public String getSize() {
+
+    public Size getSize() {
         return this.size;
     }
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
+    
 
 
     @Override
@@ -45,6 +50,28 @@ public class Shirt extends Product{
     public int hashCode() {
         return Objects.hash(size, super.getPrice(), super.getClass(), super.getBrand());
     }
+
+
+    @Override
+    public String toString() {
+        return "SHIRT" +
+            "\t size='" + getSize() + "'" +
+            "\t price='" + super.getPrice() + "" +
+            "\t color='" + super.getColor() + "" +
+            "\t brand='" + super.getBrand() + "";
+    }
+
+    @Override
+    public void fold() {
+        System.out.println("Lay shirt on flat surface");
+        System.out.println("Fold shirt sideways");
+        System.out.println("Bring sleeves in");
+        System.out.println("Fold from bottom up");
+        
+    }
+
+    
+
 // 
 
 
