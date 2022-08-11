@@ -1,6 +1,10 @@
 package src.main.model.account;
 
+
 public class Chequing extends Account {
+
+    private static final double OVERDRAFT_FEE = 5.5;
+    private static final double TAX_RATE = 0.15;
     
     public Chequing(String id, String name, double balance) {
         super(id, name, balance);
@@ -12,9 +16,15 @@ public class Chequing extends Account {
 
     @Override
     public boolean withdraw(double amount) {
-        if ()
-        super.setBalance(super.round(super.getBalance() - amount));
-        return false;
+        if (super.round(super.getBalance() - amount) > 0) {
+            super.setBalance(super.round(super.getBalance() - amount));
+            return true;
+        } else if (super.round(super.getBalance() - amount) > -200) {
+            super.setBalance(super.round(super.getBalance() - amount - OVERDRAFT_FEE));
+            return true;
+        } else {
+            return false;
+        }
     }
 
     

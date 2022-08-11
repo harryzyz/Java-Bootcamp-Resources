@@ -37,4 +37,32 @@ public class AccountTests {
         assertEquals(-15.42, chequing.getBalance());
     }
 
+    @Test
+    public void overdraftLimit() {
+        Chequing chequing = (Chequing) accounts[0];
+        chequing.withdraw(1726);
+        assertEquals(1524.51, chequing.getBalance());
+    }
+
+    @Test
+    public void withdrawalFee() {
+        Savings savings = (Savings) accounts[1];
+        savings.withdraw(100);
+        assertEquals(2136.6, savings.getBalance());
+    }
+
+    @Test
+    public void withdrawalInterest() {
+        Loan loan = (Loan) accounts[2];
+        loan.withdraw(2434.31);
+        assertEquals(5020.31, loan.getBalance());
+    }
+
+    @Test
+    public void withdrawalLimit() {
+        Loan loan = (Loan) accounts[2];
+        loan.withdraw(7463.69);
+        assertEquals(2537.31, loan.getBalance());
+    }
+
 }
