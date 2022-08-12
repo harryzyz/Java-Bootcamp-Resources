@@ -65,4 +65,26 @@ public class AccountTests {
         assertEquals(2537.31, loan.getBalance());
     }
 
+    @Test
+    public void deposit() {
+        Chequing chequing = (Chequing) accounts[0];
+        chequing.deposit(5000);
+        assertEquals(6524.51, chequing.getBalance());
+    }
+
+    @Test
+    public void loanDeposit() {
+        Loan loan = (Loan) accounts[2];
+        loan.deposit(1000);
+        assertEquals(1537.31, loan.getBalance());
+    }
+
+    @Test
+    public void incomeTax() {
+        Chequing chequing = (Chequing) accounts[0];
+        chequing.deposit(4000);
+        chequing.tax(4000);
+        assertEquals(5374.51, chequing.getBalance());
+    }
+
 }
